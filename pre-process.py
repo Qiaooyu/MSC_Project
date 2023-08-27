@@ -32,8 +32,11 @@ def preprocess_email(email_body, stop_words):
     lemmatizer = WordNetLemmatizer()
 
     words = manual_tokenize(clean_email_body)
+
     words = [word.lower() for word in words]
+
     filtered_words = [word for word in words if word.isalpha() and word not in stop_words]
+
     filtered_words = [
         "URL" if re.match(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',
                           word) else word for word in filtered_words]
